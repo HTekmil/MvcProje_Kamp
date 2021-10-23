@@ -28,9 +28,7 @@ namespace MvcProje_Kamp.Controllers
             var sorgu4 = (from x in c.Categories orderby x.Headings.Count() descending select x.CategoryName).FirstOrDefault();
             ViewBag.d4 = sorgu4;
 
-            var sorgutrue = c.Categories.Count(x => x.CategoryStatus == true);
-            var sorgufalse = c.Categories.Count(x => x.CategoryStatus == false);
-            var sorgu5 = (Math.Abs(sorgutrue - sorgufalse));
+            var sorgu5 = Math.Abs(c.Categories.Count(x => x.CategoryStatus == true) - c.Categories.Count(x => x.CategoryStatus == false));
             ViewBag.d5 = sorgu5;
             return View();
         }
