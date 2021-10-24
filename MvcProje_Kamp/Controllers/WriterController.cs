@@ -56,6 +56,7 @@ namespace MvcProje_Kamp.Controllers
             ValidationResult result = writervalidator.Validate(p);
             if (result.IsValid)
             {
+                
                 wm.WriterUpdate(p);
                 return RedirectToAction("Index");
             }
