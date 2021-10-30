@@ -43,6 +43,7 @@ namespace MvcProje_Kamp.Controllers
         public ActionResult AddHeading(Heading p)
         {
             p.HeadingDate = DateTime.Parse(DateTime.Now.ToShortDateString());
+            p.HeadingStatus = true;
             hm.HeadingAdd(p);
             return RedirectToAction("Index");
         }
@@ -68,7 +69,14 @@ namespace MvcProje_Kamp.Controllers
         public ActionResult DeleteHeading(int id)
         {
             var headingvalue = hm.GetByID(id);
-            headingvalue.HeadingStatus = false;
+            if (headingvalue.HeadingStatus == true)
+            {
+                headingvalue.HeadingStatus = false;
+            }
+            else
+            {
+                headingvalue.HeadingStatus = true;
+            }
             hm.HeadingDelete(headingvalue);
             return RedirectToAction("Index");
         }
