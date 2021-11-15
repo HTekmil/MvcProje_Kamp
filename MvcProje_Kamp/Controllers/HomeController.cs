@@ -26,5 +26,11 @@ namespace MvcProje_Kamp.Controllers
 
             return View();
         }
+
+        [AllowAnonymous]
+        public ActionResult HomePage()
+        {
+            return View();
+        }
     }
 }
