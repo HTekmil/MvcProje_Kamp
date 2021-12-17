@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstract\IAboutDal.cs" />
+    <Compile Include="Abstract\IAdminDal.cs" />
     <Compile Include="Abstract\ICategoryDal.cs" />
     <Compile Include="Abstract\IContactDal.cs" />
     <Compile Include="Abstract\IContentDal.cs" />
@@ -64,6 +65,7 @@
     <Compile Include="Concrete\Repositories\CategoryRepository.cs" />
     <Compile Include="Concrete\Repositories\GenericRepository.cs" />
     <Compile Include="EntityFramework\EfAboutDal.cs" />
+    <Compile Include="EntityFramework\EfAdminDal.cs" />
     <Compile Include="EntityFramework\EfCategoryDal.cs" />
     <Compile Include="EntityFramework\EfContactDal.cs" />
     <Compile Include="EntityFramework\EfContentDal.cs" />
@@ -115,6 +117,10 @@
     <Compile Include="Migrations\202110241206221_mig_add_admin_table.designer.cs">
       <DependentUpon>202110241206221_mig_add_admin_table.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202111222055524_message-ad-taslak-okunndu.cs" />
+    <Compile Include="Migrations\202111222055524_message-ad-taslak-okunndu.designer.cs">
+      <DependentUpon>202111222055524_message-ad-taslak-okunndu.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -161,6 +167,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202110241206221_mig_add_admin_table.resx">
       <DependentUpon>202110241206221_mig_add_admin_table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111222055524_message-ad-taslak-okunndu.resx">
+      <DependentUpon>202111222055524_message-ad-taslak-okunndu.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

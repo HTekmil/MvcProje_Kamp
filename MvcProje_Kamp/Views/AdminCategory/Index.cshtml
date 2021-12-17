@@ -5,8 +5,9 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-
-<table class="table table-bordered">
+<br />
+<a href="/AdminCategory/AddCategory/" class="btn btn-info btn-sm" id="newcategory">Yeni Kategori</a>
+<table class="table table-bordered" >
     <tr>
         <th>#</th>
         <th>Kategori Adı</th>
@@ -29,5 +30,5 @@
         </tr>
     }
 </table>
-<a href="/AdminCategory/AddCategory/" class="btn btn-info">Yeni Kategori</a>
+@*<a href="/AdminCategory/AddCategory/" class="btn btn-info">Yeni Kategori</a>*@
 

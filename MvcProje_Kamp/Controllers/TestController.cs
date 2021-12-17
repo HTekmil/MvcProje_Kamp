@@ -22,5 +22,10 @@ namespace MvcProje_Kamp.Controllers
         {
             return View();
         }
+
+        public ActionResult SweetAlert()
+        {
+            return View();
+        }
     }
 }
