@@ -31,6 +31,13 @@ namespace MvcProje_Kamp.Controllers
             return View(messagelist);
         }
 
+        public ActionResult Draft()
+        {
+            string p = (string)Session["WriterMail"];
+            var messagelist = cm.GetListDraft(p);
+            return View(messagelist);
+        }
+
         public PartialViewResult MessageListMenu()
         {
             return PartialView();
@@ -53,22 +60,45 @@ namespace MvcProje_Kamp.Controllers
         }
 
         [HttpPost]
-        public ActionResult NewMessage(Message p)
+        public ActionResult NewMessage(Message p, string button)
         {
             string sender = (string)Session["WriterMail"];
             ValidationResult result = messagevalidator.Validate(p);
-            if (result.IsValid)
+            if (button == "send")
             {
-                p.SenderMail = sender;
-                p.MessageDate = DateTime.Parse(DateTime.Now.ToShortDateString());
-                cm.MessageAdd(p);
-                return RedirectToAction("SendBox");
-            }
-            else
-            {
-                foreach (var item in result.Errors)
+                if (result.IsValid)
                 {
-                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                    p.SenderMail = sender;
+                    p.MessageDate = DateTime.Parse(DateTime.Now.ToShortDateString());
+                    p.Draft = false;
+                    cm.MessageAdd(p);
+                    return RedirectToAction("SendBox");
+                }
+                else
+                {
+                    foreach (var item in result.Errors)
+                    {
+                        ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                    }
+                }
+
+            }
+            else if (button == "draft")
+            {
+                if (result.IsValid)
+                {
+                    p.SenderMail = sender;
+                    p.MessageDate = DateTime.Now;
+                    p.Draft = true;
+                    cm.MessageAdd(p);
+                    return RedirectToAction("SendBox");
+                }
+                else
+                {
+                    foreach (var item in result.Errors)
+                    {
+                        ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                    }
                 }
             }
             return View();
